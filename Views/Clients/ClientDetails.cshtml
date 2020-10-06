@@ -1,0 +1,55 @@
+﻿@model LawOffice.Models.ClientPerson
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row content-row">
+        @Html.Partial("_LeftSideBar")
+        <div class="sub-content-wrapper column">
+            <div class="sub-content">
+                <h2>@ViewBag.Title</h2>
+                <hr />
+                @using (Html.BeginForm("Save", "Clients"))
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.FirstName)
+                        @Html.TextBoxFor(c => c.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.FirstName)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.MiddleName)
+                        @Html.TextBoxFor(c => c.MiddleName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.LastName)
+                        @Html.TextBoxFor(c => c.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.LastName)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.Address)
+                        @Html.TextBoxFor(c => c.Address, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.IdCardNumber)
+                        @Html.TextBoxFor(c => c.IdCardNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(c => c.IdCardNumber)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.CitizenIdentityNumber)
+                        @Html.TextBoxFor(c => c.CitizenIdentityNumber, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.Email)
+                        @Html.TextBoxFor(c => c.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(c => c.PhoneNumber)
+                        @Html.TextBoxFor(c => c.PhoneNumber, new { @class = "form-control" })
+                    </div>
+                    @Html.HiddenFor(c => c.Id)
+                    <input type="submit" class="btn btn-default button-save" value="Save">
+                }
+            </div>
+        </div>
+    </div>
+

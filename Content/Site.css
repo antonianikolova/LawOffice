@@ -1,0 +1,280 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    width: 100vw;
+    height: 80vh;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.body-content-wrapper{
+    height: inherit;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.account-content-wrapper {
+    padding: 50px;
+}
+
+.content-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 0px;
+    width: 100%;
+    height: inherit;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+.sub-content-wrapper {
+    padding-left: 50px;
+    padding-right: 0px;
+    padding-bottom: 50px;
+    padding-top: 25px;
+    margin-right: 0px;
+    float: left;
+    min-width: 70vw;
+    height: inherit;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    flex: 0;
+    align-self: stretch;
+}
+
+.sub-content {
+    width: inherit;
+    height: inherit;
+    padding-right: 50px;
+}
+
+.nav-custom-tab {
+    color: #895e3e !important;
+}
+
+.nav-custom-tab:hover {
+    color: #b68662 !important;
+}
+
+.home-page {
+    width: inherit;
+    height: 100%;
+    background-image: url(../Resources/lawoffice_1.jpg);
+    background-size: cover;
+    margin-left: 0px;
+}
+
+.home-text-heading {
+    margin-top: 35vh;
+    z-index: 11;
+    background-color: #101010;
+    opacity: 0.6;
+    padding: 10px;
+    color: lightgrey;
+}
+
+.home-text-heading-text{
+    margin-left: 100px;
+}
+
+.footer-area {
+    background-color: #111111;
+    color: #808080;
+    width: 100vw;
+    height: 10vh;
+    border-top: solid 1px;
+    border-color: black;
+    padding-top: 15px;
+    padding-left: 100px;
+}
+
+.footer-content {
+
+}
+
+hr {
+    border: 0;
+    clear: both;
+    display: block;
+    width: 96%;
+    background-color: #bbbbbb;
+    height: 1px;
+}
+
+.left-side-menu {
+    height: inherit;
+    width: 50%;
+    color: lightgrey;
+    background-color: #373737;
+    padding-top: 0px;
+
+    display: flex;
+    flex-direction: column;
+    flex: 0;
+}
+
+.left-side-menu-tab {
+    text-decoration-color: #222;
+    height: auto;
+    min-width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: lightgrey;
+    background-color: #373737;
+    border-bottom: solid 1px;
+    border-color: #111111;
+}
+
+.left-side-menu-tab:hover{
+    color: white;
+    background-color: #474747
+}
+
+.left-side-menu-tab-text {
+    color: lightgrey;
+    background-color: #373737;
+    min-width: 100%;
+    display: block;
+    padding-left: 100px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 75px;
+    font-size: 15px;
+}
+
+.left-side-menu-tab-text:hover {
+    color: #b68662;
+    background-color: #474747;
+    text-decoration: none;
+}
+
+.search-box {
+    background-image: url('../../Resources/search-icon-png-9966.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #bbbbbb;
+    margin-bottom: 12px;
+}
+
+.table-main-list {
+    border-collapse: collapse;
+    width: 750px;
+    border: 1px solid #bbbbbb;
+    font-size: 16px;
+}
+.table-main-list-narrow {
+    border-collapse: collapse;
+    width: 750px;
+    border: 1px solid #bbbbbb;
+    font-size: 14px;
+}
+
+#myTable th, #myTable td {
+    text-align: left;
+    padding: 5px;
+}
+
+#myTable tr {
+    border-bottom: 1px solid #bbbbbb;
+}
+
+.table-main-list-header {
+    background-color: #cccccc;
+}
+
+.table-main-list-data:hover {
+    background-color: #f1f1f1;
+}
+
+.table-main-header-1{
+    width: 80%;
+}
+
+.table-main-header-2 {
+    width: 50%;
+}
+
+.table-main-header-3 {
+    width: 20%;
+}
+
+.table-main-header-4 {
+    width: 15%;
+}
+
+.table-main-header-delete {
+    width: 20%;
+}
+
+.button-save{
+    margin-top: 25px;
+    margin-bottom: 50px;
+    background-color: #b68662;
+}
+
+.button-delete {
+    background-color: #89280e;
+}
+.delete-custom-control {
+    color: #89280e;
+}
+.delete-custom-control:hover{
+    color: #808080;
+}
+.open-custom-control{
+    color: chocolate;
+}
+.open-custom-control:hover {
+    color: burlywood;
+}
+.table-td-info {
+    color: #373737;
+}
+.table-td-info:hover {
+        color: #808080;
+}
+
+.field-validation-error {
+    color: #89280e;
+}
+.input-validation-error {
+    border: 2px solid #89280e;
+}
+.button-new {
+    margin-left: 200px;
+    margin-right: 0px;
+    background-color: #b68662;
+    display: inline-block;
+    float: right;
+}
+.table-search-box {
+    margin-left: 15px;
+    margin-right: 50px;
+    display: inline-block;
+}
+.box-and-button-wrapper {
+    width: 750px;
+}
+
+.table-td-not-editable {
+    color: #373737;
+}

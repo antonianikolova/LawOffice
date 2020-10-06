@@ -1,0 +1,75 @@
+﻿@model LawOffice.ViewModels.DocumentViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-row">
+    @Html.Partial("_LeftSideBar")
+    <div class="sub-content-wrapper column">
+        <div class="sub-content">
+            <h2>@ViewBag.Title</h2>
+            <hr />
+            @using (Html.BeginForm("Save", "Documents", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.Title)
+                    @Html.TextBoxFor(d => d.Doc.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.Doc.Title)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.Description)
+                    @Html.TextAreaFor(d => d.Doc.Description, 5, 1, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.ReceivedOnDate)
+                    @Html.TextBoxFor(d => d.Doc.ReceivedOnDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.Doc.ReceivedOnDate)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.DueOnDate)
+                    @Html.TextBoxFor(d => d.Doc.DueOnDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.Doc.DueOnDate)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.CaseId)
+                    @Html.DropDownListFor(d => d.Doc.CaseId, new SelectList(Model.AvailableCases, "Id", "Title"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.Doc.CaseId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.DocumentLink)
+                    @Html.TextBoxFor(d => d.Doc.DocumentLink, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.DocumentFile, htmlAttributes: new { @class = "form-control" })
+                    <div class="">
+                        <input type="file" name="DocumentFile" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.DocumentType)
+                    @Html.DropDownListFor(d => d.Doc.DocumentType, new SelectList(Model.DocumentType), "", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.Status)
+                    @Html.DropDownListFor(d => d.Doc.Status, new SelectList(Model.Status), "", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.AddedByAppUser)
+                    @Html.TextBoxFor(d => d.AddedByName, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.HiddenFor(d => d.Doc.AddedById, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(d => d.Doc.AddedOnDate)
+                    @Html.TextBoxFor(d => d.Doc.AddedOnDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.HiddenFor(d => d.Doc.Id)
+                <input type="submit" class="btn btn-default button-save" value="Save">
+            }
+        </div>
+    </div>
+</div>
+

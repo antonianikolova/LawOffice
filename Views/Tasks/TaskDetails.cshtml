@@ -1,0 +1,50 @@
+﻿@model LawOffice.ViewModels.TaskViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-row">
+    @Html.Partial("_LeftSideBar")
+    <div class="sub-content-wrapper column">
+        <div class="sub-content">
+            <h2>@ViewBag.Title</h2>
+            <hr />
+            @using (Html.BeginForm("Save", "Tasks"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Task.Title)
+                    @Html.TextBoxFor(t => t.Task.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(t => t.Task.Title)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Task.Description)
+                    @Html.TextAreaFor(t => t.Task.Description, 5, 1, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Task.StartDate)
+                    @Html.TextBoxFor(t => t.Task.StartDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(t => t.Task.StartDate)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Task.EndDate)
+                    @Html.TextBoxFor(t => t.Task.EndDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(t => t.Task.EndDate)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Task.AssignedToId)
+                    @Html.DropDownListFor(t => t.Task.AssignedToId, new SelectList(Model.AvailableUsers, "Id", "LastName"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(t => t.Task.AssignedToId)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(t => t.Task.Status)
+                    @Html.DropDownListFor(t => t.Task.Status, new SelectList(Model.Status), "", new { @class = "form-control" })
+                </div>
+
+                @Html.HiddenFor(t => t.Task.Id)
+                <input type="submit" class="btn btn-default button-save" value="Save">
+            }
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,65 @@
+﻿@model List<LawOffice.Models.Case>
+@{
+    ViewBag.Title = "Cases";
+}
+
+<div class="row content-row">
+    @Html.Partial("_LeftSideBar")
+    <div class="sub-content-wrapper column">
+        <div class="sub-content">
+            <h2>@ViewBag.Title</h2>
+            <hr />
+            @if (Model.Count == 0)
+            {
+                <p> No Cases in this List yet. </p>
+            }
+            else
+            {
+                <div class="row box-and-button-wrapper">
+                    <input type="text" id="myInput" class="form-control table-search-box" onkeyup="myFunction()" placeholder="Search ..." title="Type in to search">
+                    <input type="button" class="btn btn-default button-new" value="New +" onclick="location.href='@Url.Action("New", "Cases")'" />
+                </div>
+
+                <br />
+                <table class="table-main-list" id="myTable">
+                    <tr class="header table-main-list-header">
+                        <th class="table-main-header-2">Title</th>
+                        <th class="table-main-header-3">Register Number</th>
+                        <th class="table-main-header-3">Register Date</th>
+                        <th class="table-main-header-delete">Delete</th>
+                    </tr>
+                    @foreach (var lawCase in Model)
+                    {
+                        <tr class="table-main-list-data">
+                            <td>@Html.ActionLink(lawCase.Title, "Edit", "Cases", new { id = lawCase.Id }, new { @class = "table-td-info" })</td>
+                            <td class="table-td-not-editable">@lawCase.CaseRegisterNumber</td>
+                            <td class="table-td-not-editable">@lawCase.CaseRegisterDate.ToString("dd / MM / yyyy") </td>
+                            <td>@Html.ActionLink("Delete", "Delete", "Cases", new { id = lawCase.Id }, new { @class = "delete-custom-control" })</td>
+                        </tr>
+                    }
+                </table>
+            }
+
+        </div>
+    </div>
+</div>
+<script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+</script>

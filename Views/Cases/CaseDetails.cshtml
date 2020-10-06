@@ -1,0 +1,66 @@
+﻿@model LawOffice.ViewModels.CaseViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-row">
+    @Html.Partial("_LeftSideBar")
+    <div class="sub-content-wrapper column">
+        <div class="sub-content">
+            <h2>@ViewBag.Title</h2>
+            <hr />
+            @using (Html.BeginForm("Save", "Cases"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.Title)
+                    @Html.TextBoxFor(c => c.Case.Title, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Case.Title)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.Description)
+                    @Html.TextAreaFor(c => c.Case.Description, 5, 1, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.CaseRegisterNumber)
+                    @Html.TextBoxFor(c => c.Case.CaseRegisterNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Case.CaseRegisterNumber)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.CaseRegisterDate)
+                    @Html.TextBoxFor(c => c.Case.CaseRegisterDate, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Case.CaseRegisterDate)
+                </div>
+               
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.ClientId)
+                    @Html.DropDownListFor(c => c.Case.ClientId, new SelectList(Model.AvailableClients, "Id", "LastName"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Case.ClientId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.OppositePartyName)
+                    @Html.TextBoxFor(c => c.Case.OppositePartyName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(c => c.Case.OppositePartyName)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.CaseCategory)
+                    @Html.DropDownListFor(c => c.Case.CaseCategory, new SelectList(Model.Category), "", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.CaseStatus)
+                    @Html.DropDownListFor(c => c.Case.CaseStatus, new SelectList(Model.Status), "", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.UpdatedBy)
+                    @Html.TextBoxFor(c => c.UpdatedByName, new { @class = "form-control", @readonly = "readonly" })
+                    @Html.HiddenFor(c => c.Case.UpdatedById, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Case.UpdatedOnDate)
+                    @Html.TextBoxFor(c => c.Case.UpdatedOnDate, "{0:dd/MM/yyyy}", new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.HiddenFor(c => c.Case.Id)
+                <input type="submit" class="btn btn-default button-save" value="Save">
+            }
+        </div>
+    </div>
+</div>
